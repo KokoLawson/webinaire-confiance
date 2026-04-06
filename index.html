@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La confiance, ça se modélise — Webinaire gratuit · 19 avril à 20h</title>
+<meta name="description" content="Webinaire gratuit pour experts techniques confirmés. 19 avril à 20h. 3 leviers pour incarner votre expertise sans changer qui vous êtes.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:       #002060;
+  --teal:       #0f766e;
+  --gold:       #c6a016;
+  --gold-light: #e8c547;
+  --white:      #ffffff;
+  --off-white:  #f8f7f4;
+  --gray-100:   #f0ede8;
+  --gray-200:   #e2ddd6;
+  --gray-400:   #9e9890;
+  --gray-700:   #3d3a35;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans:  'DM Sans', system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); color: var(--gray-700); background: var(--white); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--navy);
+  padding: 0 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+  border-bottom: 1px solid rgba(198,160,22,0.25);
+}
+.nav-logo { font-family: var(--serif); font-size: 15px; color: var(--white); letter-spacing: 0.02em; }
+.nav-logo span { color: var(--gold); }
+.nav-date { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.4); letter-spacing: 0.04em; }
+.nav-cta {
+  font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--navy); background: var(--gold); padding: 8px 20px;
+  text-decoration: none; transition: background 0.2s;
+}
+.nav-cta:hover { background: var(--gold-light); }
+
+/* ── HERO ── */
+.hero {
+  background: var(--navy);
+  padding: 128px 5% 96px;
+  min-height: 94vh;
+  display: flex; align-items: center;
+}
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 80px;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+.hero-eyebrow {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 28px;
+}
+.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(38px, 4.5vw, 58px);
+  font-weight: 400; color: var(--white);
+  line-height: 1.1; margin-bottom: 10px;
+}
+.hero-title em { font-style: italic; color: var(--gold); }
+.hero-title-sub {
+  font-family: var(--serif);
+  font-size: clamp(15px, 1.6vw, 19px);
+  font-weight: 400; font-style: italic;
+  color: rgba(255,255,255,0.38);
+  margin-bottom: 32px; line-height: 1.45;
+}
+.hero-sub {
+  font-size: 17px; font-weight: 300;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.8; margin-bottom: 44px; max-width: 500px;
+}
+.hero-meta {
+  display: flex; gap: 0;
+  border: 1px solid rgba(255,255,255,0.1);
+  max-width: 420px;
+}
+.hero-meta-item {
+  flex: 1; padding: 18px 20px;
+  border-right: 1px solid rgba(255,255,255,0.07);
+}
+.hero-meta-item:last-child { border-right: none; }
+.meta-label { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 5px; }
+.meta-val { font-family: var(--serif); font-size: 15px; color: var(--white); }
+.meta-val em { font-style: normal; color: var(--gold); }
+
+/* Hero form card */
+.hero-form {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.13);
+  padding: 40px 36px;
+}
+.hf-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+.hf-title { font-family: var(--serif); font-size: 21px; font-weight: 400; color: var(--white); margin-bottom: 6px; line-height: 1.3; }
+.hf-sub { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.38); margin-bottom: 28px; line-height: 1.5; }
+.hf-divider { height: 1px; background: rgba(255,255,255,0.08); margin-bottom: 26px; }
+
+/* ── SHARED FORM ── */
+.f-field { margin-bottom: 14px; }
+.f-field label { display: block; font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.38); margin-bottom: 7px; }
+.f-field input,
+.f-field select {
+  width: 100%; background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  color: var(--white); font-family: var(--sans);
+  font-size: 14px; font-weight: 300;
+  padding: 12px 14px; outline: none;
+  transition: border-color 0.2s;
+  appearance: none; -webkit-appearance: none;
+}
+.f-field input::placeholder { color: rgba(255,255,255,0.22); }
+.f-field input:focus,
+.f-field select:focus { border-color: var(--gold); }
+.f-field select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7' viewBox='0 0 11 7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='%23c6a016' stroke-width='1.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 13px center; padding-right: 36px;
+}
+.f-field select option { background: #002060; color: #fff; }
+
+.f-consent { display: flex; align-items: flex-start; gap: 9px; margin-bottom: 18px; }
+.f-consent input[type="checkbox"] { margin-top: 3px; flex-shrink: 0; accent-color: var(--gold); }
+.f-consent label { font-size: 11px; font-weight: 300; color: rgba(255,255,255,0.35); line-height: 1.55; }
+
+.f-submit {
+  width: 100%; background: var(--gold); color: var(--navy);
+  font-family: var(--sans); font-size: 12px; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 16px; border: none; cursor: pointer; transition: background 0.2s;
+}
+.f-submit:hover { background: var(--gold-light); }
+.f-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.f-note { margin-top: 12px; font-size: 11px; font-weight: 300; color: rgba(255,255,255,0.22); text-align: center; line-height: 1.5; }
+
+.f-success {
+  display: none; padding: 28px 20px;
+  border: 1px solid rgba(15,118,110,0.4);
+  background: rgba(15,118,110,0.1); text-align: center;
+}
+.f-success p { font-family: var(--serif); font-size: 18px; color: var(--white); line-height: 1.6; }
+.f-success em { color: var(--gold); font-style: italic; }
+
+/* ── SECTIONS ── */
+section { padding: 96px 5%; }
+.eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 18px; }
+.sec-title { font-family: var(--serif); font-size: clamp(28px, 3vw, 40px); font-weight: 400; color: var(--navy); line-height: 1.2; margin-bottom: 14px; }
+.sec-title em { font-style: italic; color: var(--teal); }
+.sec-sub { font-size: 16px; font-weight: 300; color: var(--gray-400); max-width: 540px; line-height: 1.75; }
+.sec-header { margin-bottom: 60px; }
+
+/* ── PAIN — 3 ITEMS ── */
+.pain { background: var(--off-white); }
+.pain-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px; background: var(--gray-200);
+}
+.pain-item {
+  background: var(--off-white); padding: 44px 36px;
+  border-left: 3px solid transparent;
+  transition: border-color 0.2s, background 0.2s;
+}
+.pain-item:hover { border-left-color: var(--gold); background: var(--white); }
+.pain-num { font-family: var(--serif); font-size: 11px; font-weight: 600; color: var(--gold); letter-spacing: 0.15em; margin-bottom: 18px; }
+.pain-text { font-size: 16px; font-weight: 300; color: var(--gray-700); line-height: 1.72; }
+.pain-text strong { font-weight: 500; color: var(--navy); }
+
+/* ── FILTER ── */
+.filter-section { background: var(--white); }
+.filter-layout {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 2px; background: var(--gray-200);
+}
+.filter-col { background: var(--white); padding: 52px 44px; }
+.fc-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+.fc-title { font-family: var(--serif); font-size: 25px; font-weight: 400; color: var(--navy); line-height: 1.25; margin-bottom: 36px; }
+.fc-title em { font-style: italic; color: var(--teal); }
+.filter-col.no .fc-eyebrow { color: var(--gray-400); }
+.filter-col.no .fc-title em { color: var(--gray-400); }
+
+.chk-list { list-style: none; }
+.chk-list li {
+  display: flex; gap: 13px; align-items: flex-start;
+  padding: 13px 0; border-bottom: 1px solid var(--gray-100);
+  font-size: 14px; font-weight: 300; color: var(--gray-700); line-height: 1.55;
+}
+.chk-list li:last-child { border-bottom: none; }
+.chk-list li::before { content: '✓'; color: var(--teal); font-size: 12px; font-weight: 500; flex-shrink: 0; margin-top: 2px; }
+.filter-col.no .chk-list li::before { content: '×'; color: var(--gray-400); font-size: 15px; }
+
+.fc-note { margin-top: 28px; padding: 18px 22px; background: var(--off-white); border-left: 3px solid var(--teal); font-size: 13px; font-style: italic; font-weight: 300; color: var(--gray-400); line-height: 1.6; }
+.filter-col.no .fc-note { border-left-color: var(--gray-200); }
+
+/* ── PROMESSES ── */
+.promises { background: var(--navy); }
+.promises .eyebrow { color: var(--gold); }
+.promises .sec-title { color: var(--white); }
+.promises .sec-title em { color: rgba(255,255,255,0.35); font-size: 0.78em; }
+
+.promises-layout {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: start;
+}
+
+.promise-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+.promise-item {
+  display: flex; gap: 28px; align-items: flex-start;
+  padding: 32px 36px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  transition: background 0.2s;
+}
+.promise-item:hover { background: rgba(255,255,255,0.07); }
+.promise-num {
+  font-family: var(--serif); font-size: 32px; font-weight: 600;
+  color: var(--gold); opacity: 0.5; line-height: 1; flex-shrink: 0;
+  min-width: 36px;
+}
+.promise-body {}
+.promise-title { font-family: var(--serif); font-size: 17px; font-weight: 400; color: var(--white); margin-bottom: 8px; line-height: 1.3; }
+.promise-desc { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.42); line-height: 1.65; }
+
+/* Event details right */
+.event-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 40px;
+  position: sticky; top: 90px;
+}
+.ec-label { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+.ec-rows { display: flex; flex-direction: column; }
+.ec-row {
+  display: flex; gap: 16px; align-items: center;
+  padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.ec-row:last-child { border-bottom: none; }
+.ec-icon { font-size: 15px; min-width: 22px; }
+.ec-key { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.28); min-width: 70px; }
+.ec-val { font-size: 14px; font-weight: 300; color: var(--white); }
+.ec-val em { font-style: normal; color: var(--gold); }
+
+.ec-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 28px 0; }
+
+.ec-cta {
+  display: block; width: 100%; background: var(--gold); color: var(--navy);
+  font-family: var(--sans); font-size: 12px; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 16px; text-align: center; text-decoration: none;
+  transition: background 0.2s;
+}
+.ec-cta:hover { background: var(--gold-light); }
+.ec-cta-note { font-size: 11px; font-weight: 300; color: rgba(255,255,255,0.22); text-align: center; margin-top: 12px; line-height: 1.5; }
+
+/* ── BIO ── */
+.bio { background: var(--off-white); }
+.bio-layout { display: grid; grid-template-columns: 1fr 300px; gap: 80px; align-items: start; }
+.bio-text { font-size: 16px; font-weight: 300; color: var(--gray-700); line-height: 1.85; margin-bottom: 20px; }
+.bio-quote {
+  border-left: 3px solid var(--gold); padding: 20px 26px;
+  margin: 32px 0; background: var(--white);
+}
+.bio-quote p { font-family: var(--serif); font-size: 18px; font-weight: 400; font-style: italic; color: var(--navy); line-height: 1.5; }
+
+/* Single testimonial in bio */
+.bio-testimonial {
+  margin-top: 36px; padding: 28px 32px;
+  background: var(--white);
+  border-top: 3px solid var(--navy);
+}
+.bt-quote { font-family: var(--serif); font-size: 48px; font-weight: 600; color: var(--gold); opacity: 0.35; line-height: 0.9; margin-bottom: 16px; }
+.bt-text { font-size: 14px; font-weight: 300; color: var(--gray-700); line-height: 1.8; margin-bottom: 20px; font-style: italic; }
+.bt-author { font-size: 12px; font-weight: 500; color: var(--navy); }
+.bt-author span { font-weight: 300; color: var(--gray-400); display: block; margin-top: 3px; font-size: 11px; }
+
+.bio-card {
+  background: var(--white); padding: 36px;
+  border-top: 3px solid var(--navy);
+  position: sticky; top: 90px;
+}
+.bio-name { font-family: var(--serif); font-size: 20px; font-weight: 400; color: var(--navy); margin-bottom: 4px; }
+.bio-role { font-size: 11px; font-weight: 300; color: var(--teal); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 24px; }
+.bio-creds { list-style: none; }
+.bio-creds li {
+  font-size: 13px; font-weight: 300; color: var(--gray-700);
+  padding: 10px 0; border-bottom: 1px solid var(--gray-200);
+  display: flex; gap: 12px; align-items: center;
+}
+.bio-creds li:last-child { border-bottom: none; }
+.bio-creds li::before { content: ''; width: 4px; height: 4px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+
+/* ── INSCRIPTION ── */
+.inscription { background: var(--navy); padding: 100px 5%; }
+.insc-layout { display: grid; grid-template-columns: 1fr 460px; gap: 80px; align-items: start; }
+
+.insc-left .eyebrow { color: var(--gold); }
+.insc-left .sec-title { color: var(--white); }
+.insc-intro { font-size: 17px; font-weight: 300; color: rgba(255,255,255,0.58); line-height: 1.85; margin-bottom: 40px; }
+.insc-pull {
+  font-family: var(--serif); font-size: 17px; font-style: italic;
+  color: var(--gold); line-height: 1.6; margin-bottom: 0;
+}
+
+.insc-form-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.14);
+  padding: 44px 40px;
+}
+.ifc-title { font-family: var(--serif); font-size: 22px; font-weight: 400; color: var(--white); margin-bottom: 6px; }
+.ifc-sub { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.38); margin-bottom: 30px; line-height: 1.5; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--navy);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 28px 5%;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.footer-brand { font-family: var(--serif); font-size: 14px; color: rgba(255,255,255,0.38); }
+.footer-brand span { color: var(--gold); margin: 0 5px; }
+.footer-links { display: flex; gap: 20px; align-items: center; }
+.footer-link { color: rgba(255,255,255,0.28); font-size: 12px; text-decoration: none; transition: color 0.2s; font-weight: 300; }
+.footer-link:hover { color: var(--gold); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  .hero-inner, .promises-layout, .bio-layout, .insc-layout { grid-template-columns: 1fr; }
+  .hero-form { max-width: 480px; }
+  .filter-layout { grid-template-columns: 1fr; }
+  .pain-grid { grid-template-columns: 1fr; }
+  .bio-card, .event-card { position: static; }
+}
+@media (max-width: 600px) {
+  .hero { padding: 108px 5% 72px; }
+  section { padding: 72px 5%; }
+  .filter-col { padding: 40px 24px; }
+  .nav-date { display: none; }
+  .promise-item { padding: 24px; gap: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-logo">Koko <span>Lawson Adoté</span></div>
+  <div class="nav-date">Webinaire · 19 avril · 20h</div>
+  <a href="#inscription" class="nav-cta">Je m'inscris</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-eyebrow">Webinaire gratuit · Pour experts techniques confirmés</p>
+      <h1 class="hero-title">La confiance,<br><em>ça se modélise</em></h1>
+      <p class="hero-title-sub">60 minutes en direct, avec des exercices guidés et de l'interaction. Pas un exposé.</p>
+      <p class="hero-sub">Vous êtes actuaire, data scientist, ingénieur·e, business analyst. Vous maîtrisez votre domaine. Mais il y a un écart entre qui vous êtes et la place que vous occupez. Ce webinaire, c'est 60 minutes en direct, avec des exercices guidés et de l'interaction, pour commencer à explorer ça.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="meta-label">Date</div>
+          <div class="meta-val"><em>19 avril</em> 2025</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="meta-label">Heure</div>
+          <div class="meta-val"><em>20h</em> – 21h</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="meta-label">Durée</div>
+          <div class="meta-val">~<em>60 min</em></div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="meta-label">Tarif</div>
+          <div class="meta-val"><em>Gratuit</em></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-form">
+      <p class="hf-eyebrow">Inscription gratuite</p>
+      <p class="hf-title">Réservez votre place</p>
+      <p class="hf-sub">Replay disponible 48h pour les inscrits uniquement</p>
+      <div class="hf-divider"></div>
+      <form id="form-hero" action="https://formspree.io/f/xjgplvbz" method="POST" onsubmit="handleSubmit(event,'suc-hero','form-hero')">
+        <div class="f-field">
+          <label for="ph-prenom">Prénom</label>
+          <input type="text" id="ph-prenom" name="prenom" placeholder="Votre prénom" required>
+        </div>
+        <div class="f-field">
+          <label for="ph-email">Email</label>
+          <input type="email" id="ph-email" name="email" placeholder="votre@email.com" required>
+        </div>
+        <div class="f-field">
+          <label for="ph-profil">Votre profil</label>
+          <select id="ph-profil" name="profil" required>
+            <option value="" disabled selected>Choisissez</option>
+            <option>Actuaire</option>
+            <option>Data scientist</option>
+            <option>Ingénieur·e</option>
+            <option>Business analyst</option>
+            <option>Profil finance / CDG</option>
+            <option>Autre expert technique</option>
+          </select>
+        </div>
+        <input type="hidden" name="_subject" value="Inscription : La confiance, ça se modélise">
+        <input type="text" name="_gotcha" style="display:none">
+        <button type="submit" class="f-submit">Réserver ma place gratuitement</button>
+      </form>
+      <div id="suc-hero" class="f-success">
+        <p>C'est noté.<br><em>À très vite le 19 avril à 20h.</em><br><br>Le lien de connexion arrive dans votre boîte.</p>
+      </div>
+      <p class="f-note">Aucun spam · Désinscription en 1 clic</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── PAIN — 3 SITUATIONS ── -->
+<section class="pain">
+  <div class="sec-header">
+    <p class="eyebrow">Vous vous reconnaissez ?</p>
+    <h2 class="sec-title">Vous avez les données.<br><em>Mais pas encore la parole.</em></h2>
+    <p class="sec-sub">Ce n'est pas un manque de compétence. C'est un mécanisme propre aux experts techniques, et il se travaille.</p>
+  </div>
+  <div class="pain-grid">
+    <div class="pain-item">
+      <p class="pain-num">01</p>
+      <p class="pain-text">Vous sortez d'une réunion en pensant <strong>« j'aurais dû dire ça »</strong> . Vous l'aviez pensé pendant la réunion. Votre analyse était juste. Elle est restée silencieuse.</p>
+    </div>
+    <div class="pain-item">
+      <p class="pain-num">02</p>
+      <p class="pain-text">Vous attendez d'être <strong>certain·e à 100 %</strong> avant de vous exprimer. Ce moment n'arrive jamais vraiment. Et pendant ce temps, quelqu'un d'autre, moins rigoureux, pose le cadre à votre place.</p>
+    </div>
+    <div class="pain-item">
+      <p class="pain-num">03</p>
+      <p class="pain-text">Face à un interlocuteur qui conteste votre approche, vous vous <strong>justifiez à l'excès</strong>. Vous sentez que votre expertise devrait suffire. Elle ne suffit pas, pas comme ça.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── POUR VOUS / PAS POUR VOUS ── -->
+<section class="filter-section">
+  <div class="sec-header">
+    <p class="eyebrow">Filtre honnête</p>
+    <h2 class="sec-title">Ce webinaire est-il <em>fait pour vous ?</em></h2>
+    <p class="sec-sub">Pas de survente. Voici exactement pour qui ce contenu est conçu, et pour qui il ne l'est pas.</p>
+  </div>
+  <div class="filter-layout">
+    <div class="filter-col">
+      <p class="fc-eyebrow">Oui, c'est pour vous</p>
+      <h3 class="fc-title">Ce webinaire est <em>fait pour vous</em> si…</h3>
+      <ul class="chk-list">
+        <li>Vous êtes expert·e technique confirmé·e : actuaire, data scientist, ingénieur·e, business analyst, profil finance ; avec 5 à 15 ans d'expérience</li>
+        <li>Vous maîtrisez votre sujet mais sentez que votre expertise reste trop souvent invisible dans les décisions</li>
+        <li>Vous voulez prendre votre place en réunion, face à des managers ou à des interlocuteurs non-techniques</li>
+        <li>Vous cherchez une approche structurée qui part de qui vous êtes : vos ressources, votre posture, votre façon d'être. Pas des techniques superficielles à plaquer</li>
+        <li>Vous voulez progresser sans changer qui vous êtes</li>
+      </ul>
+      <p class="fc-note">Ce webinaire a été conçu spécifiquement pour les esprits analytiques. Si vous vous reconnaissez ici, vous êtes exactement là où il faut.</p>
+    </div>
+    <div class="filter-col no">
+      <p class="fc-eyebrow">Non, ce n'est pas pour vous</p>
+      <h3 class="fc-title">Ce n'est <em>pas pour vous</em> si…</h3>
+      <ul class="chk-list">
+        <li>Vous êtes en début de carrière et cherchez à développer vos compétences techniques en priorité</li>
+        <li>Vous attendez des techniques pour impressionner sans questionner votre façon de vous exprimer</li>
+        <li>Vous cherchez une solution rapide sans aucun investissement dans la durée</li>
+        <li>Vous pensez que le problème vient uniquement des autres ou de votre organisation</li>
+        <li>Vous cherchez un webinaire générique de développement personnel. Celui-ci est taillé pour les experts techniques</li>
+      </ul>
+      <p class="fc-note">Si ce n'est pas le bon moment, ce n'est pas grave. Ce que nous abordons nécessite une vraie envie de changement.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROMESSES + DÉTAILS PRATIQUES ── -->
+<section class="promises">
+  <div class="promises-layout">
+    <div>
+      <div class="sec-header" style="margin-bottom:40px;">
+        <p class="eyebrow">Ce que vous en tirez</p>
+        <h2 class="sec-title">Ce que vous vivez<br>en 60 minutes.</h2>
+      </div>
+      <ul class="promise-list">
+        <li class="promise-item">
+          <div class="promise-num">1</div>
+          <div class="promise-body">
+            <p class="promise-title">Explorer qui vous êtes dans votre rapport à la confiance</p>
+            <p class="promise-desc">Identité professionnelle, valeurs, légitimité. Pas en théorie : exercice guidé, en direct, avec vos propres réponses. Une première prise de conscience qui vous appartient.</p>
+          </div>
+        </li>
+        <li class="promise-item">
+          <div class="promise-num">2</div>
+          <div class="promise-body">
+            <p class="promise-title">Nommer ce qui freine, et voir ce que vous avez déjà</p>
+            <p class="promise-desc">Identifier une croyance limitante spécifique. Puis faire le pivot vers vos ressources existantes. Le mouvement clé : de "je ne peux pas" vers "j'ai déjà".</p>
+          </div>
+        </li>
+        <li class="promise-item">
+          <div class="promise-num">3</div>
+          <div class="promise-body">
+            <p class="promise-title">Ancrer dans le corps et dans la voix</p>
+            <p class="promise-desc">Un exercice d'ancrage corporel en direct. La différence concrète entre présenter et incarner. Repartir avec quelque chose de senti, pas juste de pensé.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="event-card">
+      <p class="ec-label">Détails pratiques</p>
+      <div class="ec-rows">
+        <div class="ec-row">
+          <span class="ec-icon">📅</span>
+          <span class="ec-key">Date</span>
+          <span class="ec-val"><em>Samedi 19 avril</em> 2025</span>
+        </div>
+        <div class="ec-row">
+          <span class="ec-icon">🕗</span>
+          <span class="ec-key">Heure</span>
+          <span class="ec-val"><em>20h00</em> – 21h00 (Paris)</span>
+        </div>
+        <div class="ec-row">
+          <span class="ec-icon">💻</span>
+          <span class="ec-key">Format</span>
+          <span class="ec-val">En ligne · lien envoyé par email</span>
+        </div>
+        <div class="ec-row">
+          <span class="ec-icon">💶</span>
+          <span class="ec-key">Tarif</span>
+          <span class="ec-val"><em>Gratuit</em></span>
+        </div>
+        <div class="ec-row">
+          <span class="ec-icon">⏱</span>
+          <span class="ec-key">Durée</span>
+          <span class="ec-val"><em>60 minutes</em> · dont Q&R</span>
+        </div>
+        <div class="ec-row">
+          <span class="ec-icon">📹</span>
+          <span class="ec-key">Replay</span>
+          <span class="ec-val">48h pour les inscrits uniquement</span>
+        </div>
+        </div>
+      <div class="ec-divider"></div>
+      <a href="#inscription" class="ec-cta">Je réserve ma place</a>
+      <p class="ec-cta-note">Inscription gratuite · Confirmation immédiate</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── BIO + TÉMOIGNAGE ── -->
+<section class="bio">
+  <div class="bio-layout">
+    <div>
+      <div class="sec-header" style="margin-bottom:40px;">
+        <p class="eyebrow">Qui anime ce webinaire</p>
+        <h2 class="sec-title">Koko <em>Lawson Adoté</em></h2>
+      </div>
+      <p class="bio-text">Arrivée en France depuis l'Afrique de l'Ouest, j'ai appris à me construire une légitimité dans un environnement qui n'avait pas été pensé pour moi. Paris Diderot, Paris Dauphine, l'ENSAE. 17 ans d'actuariat. Je savais produire une analyse solide. Ce que je n'avais pas appris : comment la porter.</p>
+      <p class="bio-text">En 2022, j'ai passé un assessment de leadership. J'étais solide sur le contenu. Ce que je n'avais pas vu : ce n'est pas le contenu qu'on évalue dans ce type d'exercice. J'ai échoué. Plutôt que de subir, j'ai cherché à comprendre.</p>
+      <div class="bio-quote">
+        <p>Ce qui me manquait, ce n'était pas la compétence. C'était la posture.</p>
+      </div>
+      <p class="bio-text">Aujourd'hui j'accompagne les experts techniques qui ont tout pour réussir, et qui n'ont jamais appris à occuper l'espace qu'ils méritent. Je parle votre langue. Je suis passée par là.</p>
+
+      <div class="bio-testimonial">
+        <div class="bt-quote">"</div>
+        <p class="bt-text">Koko comprend ces situations de l'intérieur. Avant, je stressais avant chaque prise de parole. Aujourd'hui, j'exprime mes idées sans me censurer, même quand je doute. Je n'ai plus besoin de me transformer en quelqu'un d'autre pour prendre ma place.</p>
+        <p class="bt-author">Anonyme <span>Risk Manager · Régulateur financier, Londres</span></p>
+      </div>
+    </div>
+
+    <div class="bio-card">
+      <img src="photo-koko.jpg" alt="Koko Lawson Adoté, Actuaire et Coach" style="width:100%; aspect-ratio:3/4; object-fit:cover; object-position:center top; display:block; margin-bottom:24px; background:var(--gray-200);">
+      <p class="bio-name">Koko Lawson Adoté</p>
+      <p class="bio-role">Actuaire & Coach</p>
+      <ul class="bio-creds">
+        <li>Actuaire depuis 17 ans</li>
+        <li>Paris Dauphine · ENSAE</li>
+        <li>Coach Co-active certifiée</li>
+        <li>Posture & prise de parole</li>
+        <li>40+ experts accompagnés</li>
+      </ul>
+      <a href="https://www.linkedin.com/in/koko-lawson-adote/" target="_blank" style="display:flex; align-items:center; gap:10px; margin-top:24px; padding:12px 16px; border:1px solid rgba(198,160,22,0.3); text-decoration:none; transition:border-color 0.2s;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" stroke="#c6a016" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="2" y="9" width="4" height="12" stroke="#c6a016" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4" cy="4" r="2" stroke="#c6a016" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-size:12px; font-weight:300; color:rgba(255,255,255,0.5); letter-spacing:0.05em;">Voir mon profil LinkedIn</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── INSCRIPTION ── -->
+<section class="inscription" id="inscription">
+  <div class="insc-layout">
+    <div class="insc-left">
+      <div class="sec-header" style="margin-bottom:40px;">
+        <p class="eyebrow">Inscription gratuite</p>
+        <h2 class="sec-title">Rejoignez-nous<br>le <em>19 avril</em></h2>
+      </div>
+      <p class="insc-intro">Chaque mois qui passe, c'est une réunion de plus où vous vous retenez. Un CODIR de plus où votre analyse reste dans votre tête. Une promotion de plus où quelqu'un d'autre prend la décision à votre place.</p>
+      <p class="insc-pull">« La compétence sans posture reste invisible.<br>Commençons à changer ça. »</p>
+    </div>
+
+    <div class="insc-form-card">
+      <p class="ifc-title">Je réserve ma place</p>
+      <p class="ifc-sub">Gratuit · Confirmation immédiate · Replay 48h inscrits</p>
+      <form id="form-main" action="https://formspree.io/f/xjgplvbz" method="POST" onsubmit="handleSubmit(event,'suc-main','form-main')">
+        <div class="f-field">
+          <label for="fm-prenom">Prénom *</label>
+          <input type="text" id="fm-prenom" name="prenom" placeholder="Votre prénom" required>
+        </div>
+        <div class="f-field">
+          <label for="fm-nom">Nom</label>
+          <input type="text" id="fm-nom" name="nom" placeholder="Votre nom">
+        </div>
+        <div class="f-field">
+          <label for="fm-email">Email *</label>
+          <input type="email" id="fm-email" name="email" placeholder="votre@email.com" required>
+        </div>
+        <div class="f-field">
+          <label for="fm-profil">Votre profil *</label>
+          <select id="fm-profil" name="profil" required>
+            <option value="" disabled selected>Choisissez votre profil</option>
+            <option>Actuaire</option>
+            <option>Data scientist</option>
+            <option>Ingénieur·e</option>
+            <option>Business analyst</option>
+            <option>Profil finance / CDG</option>
+            <option>Autre expert technique</option>
+          </select>
+        </div>
+        <div class="f-field">
+          <label for="fm-exp">Années d'expérience</label>
+          <select id="fm-exp" name="experience">
+            <option value="" disabled selected>Votre expérience</option>
+            <option>Moins de 5 ans</option>
+            <option>5 à 10 ans</option>
+            <option>10 à 15 ans</option>
+            <option>Plus de 15 ans</option>
+          </select>
+        </div>
+        <div class="f-field">
+          <label for="fm-defi">Votre plus grand défi actuellement <span style="text-transform:none;letter-spacing:0;font-weight:300;font-size:9px;">(optionnel)</span></label>
+          <input type="text" id="fm-defi" name="defi" placeholder="Ex : prendre la parole en réunion de direction…">
+        </div>
+        <div class="f-consent">
+          <input type="checkbox" id="fm-consent" name="consent" required>
+          <label for="fm-consent">J'accepte de recevoir le lien de connexion, la ressource bonus et les prochaines communications de Koko. Désinscription possible à tout moment.</label>
+        </div>
+        <input type="hidden" name="_subject" value="Inscription webinaire : La confiance, ça se modélise">
+        <input type="text" name="_gotcha" style="display:none">
+        <button type="submit" class="f-submit">Confirmer mon inscription gratuitement</button>
+      </form>
+      <div id="suc-main" class="f-success">
+        <p>Inscription confirmée.<br><em>À très vite le 19 avril à 20h.</em><br><br>Le lien de connexion arrive dans votre boîte mail.</p>
+      </div>
+      <p class="f-note">Vos données ne sont jamais partagées · RGPD · Désabonnement en 1 clic</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── MENTIONS LÉGALES ── -->
+<section style="background:var(--off-white); padding:64px 5%; border-top:1px solid var(--gray-200);" id="mentions">
+  <p class="eyebrow" style="color:var(--navy); margin-bottom:40px;">Mentions légales</p>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:40px;">
+
+    <div>
+      <p style="font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--navy); margin-bottom:14px;">Éditeur</p>
+      <p style="font-size:13px; font-weight:300; color:var(--gray-700); line-height:1.85;">
+        Koko Lawson Adoté<br>
+        Auto-entrepreneur<br>
+        Contact : <a href="mailto:contact@kokolawson.com" style="color:var(--teal); text-decoration:none;">contact@kokolawson.com</a>
+      </p>
+    </div>
+
+    <div>
+      <p style="font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--navy); margin-bottom:14px;">Activité</p>
+      <p style="font-size:13px; font-weight:300; color:var(--gray-700); line-height:1.85;">
+        Coaching individuel et accompagnement professionnel.<br>
+        Activité non réglementée.<br>
+        Non soumis à la TVA — article 293B du CGI.
+      </p>
+    </div>
+
+    <div>
+      <p style="font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--navy); margin-bottom:14px;">Données personnelles</p>
+      <p style="font-size:13px; font-weight:300; color:var(--gray-700); line-height:1.85;">
+        Les informations collectées via ce formulaire sont utilisées uniquement pour l'envoi du lien de connexion au webinaire et des communications liées à l'activité de coaching de Koko Lawson Adoté.<br><br>
+        Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour l'exercer : <a href="mailto:contact@kokolawson.com" style="color:var(--teal); text-decoration:none;">contact@kokolawson.com</a>
+      </p>
+    </div>
+
+    <div>
+      <p style="font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--navy); margin-bottom:14px;">Propriété intellectuelle</p>
+      <p style="font-size:13px; font-weight:300; color:var(--gray-700); line-height:1.85;">
+        L'ensemble du contenu de cette page (textes, méthode, visuels) est la propriété exclusive de Koko Lawson Adoté.<br>
+        Toute reproduction est interdite sans autorisation préalable.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-brand">Koko Lawson Adoté <span>·</span> De l'Expert au Leader</div>
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/in/koko-lawson-adote/" target="_blank" class="footer-link">LinkedIn</a>
+    <a href="mailto:contact@kokolawson.com" class="footer-link">Contact</a>
+    <a href="#mentions" class="footer-link">Mentions légales</a>
+    <span style="color:rgba(255,255,255,0.15); font-size:12px;">© 2025 Koko Lawson Adoté</span>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+async function handleSubmit(e, sucId, formId) {
+  e.preventDefault();
+  const form = document.getElementById(formId);
+  const btn  = form.querySelector('button[type="submit"]');
+  const orig = btn.textContent;
+  btn.textContent = 'Envoi…'; btn.disabled = true;
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST', body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      form.style.display = 'none';
+      document.getElementById(sucId).style.display = 'block';
+    } else {
+      btn.textContent = 'Erreur, réessayez'; btn.disabled = false;
+    }
+  } catch {
+    btn.textContent = 'Erreur réseau, réessayez'; btn.disabled = false;
+  }
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.query
